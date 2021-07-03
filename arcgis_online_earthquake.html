@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"></script>
 		<title>主页</title>
 	</head>
 	<body>
@@ -44,5 +44,138 @@
 				height="260" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="2019年中国三级以上地震分级图"
 				src="//www.arcgis.com/apps/Embed/index.html?webmap=86fa675317514341a0349188d318d09a&extent=82.0184,21.4364,133.7859,38.0859&home=true&zoom=true&previewImage=false&scale=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=false&theme=light"></iframe>
 		</div>
+				<table>
+			<th>
+				<div id="main" style="width: 550px;height:400px;background-color: antiquewhite;"></div>
+			</th>
+			<script type="text/javascript">
+				var chartDom = document.getElementById('main');
+				var myChart = echarts.init(chartDom);
+				var option;
+				option = {
+					title: {
+						text: '一年内全球地震分级统计图',
+						subtext: '数据来自中国地震台网',
+						left: 'center',
+						align: 'right'
+					},
+					 tooltip: {
+					        trigger: 'axis',
+					        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+					            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+					        }
+					    },
+					xAxis: {
+						type: 'category',
+						data: ['4-5级地震', '5-6级地震', '6-7级地震', '7级以上地震']
+					},
+					yAxis: {
+						type: 'value'
+					},
+					series: [{
+						data: [319, 678, 187, 20],
+						type: 'bar',
+						showBackground: true,
+						backgroundStyle: {
+							color: 'rgba(150, 150, 160, 0.3)'
+						}
+					}]
+				};
+				option && myChart.setOption(option);
+			</script>
+			<th style="width: 600px;height:300px;background-color: antiquewhite;">
+									<img src="https://www.cea.gov.cn/eportal/fileDir/cea/UploadFile/dizhenj/2016/07/1469707879865.jpg" width="100%" height="100%">
+						<meta name="referrer" content="no-referrer" />  
+			</th>
+
+			<th>
+				
+				<div id="mainly" style="width: 550px;height:400px;background-color: antiquewhite;"></div>
+			</th>
+			<script type="text/javascript">
+				var chartDom = document.getElementById('mainly');
+				var myChart = echarts.init(chartDom);
+				var option;
+
+				option = {
+					title: {
+						text: '地震造成的经济损失与人员伤亡',
+						subtext: '2015-2018',
+						left: '',
+						align: 'right'
+					},
+					legend: {
+						left: 'bottom'
+					},
+					tooltip: {},
+					dataset: {
+						source: [
+							['年份', '2015', '2016', '2017', '2018'],
+							['直接经济损失：亿元', 179.1918, 66.8693, 147.6600, 30.2716],
+							['伤亡人数：人', 1192, 104, 676, 85],
+						]
+					},
+					xAxis: [{
+							type: 'category',
+							gridIndex: 0
+						},
+						{
+							type: 'category',
+							gridIndex: 1
+						}
+					],
+					yAxis: [{
+							gridIndex: 0
+						},
+						{
+							gridIndex: 1
+						}
+					],
+					grid: [{
+							bottom: '55%'
+						},
+						{
+							top: '55%'
+						}
+					],
+					series: [
+						// These series are in the first grid.
+						{
+							type: 'bar',
+							seriesLayoutBy: 'row'
+						},
+						{
+							type: 'bar',
+							seriesLayoutBy: 'row'
+						},
+
+						// These series are in the second grid.
+						{
+							type: 'bar',
+							xAxisIndex: 1,
+							yAxisIndex: 1
+						},
+						{
+							type: 'bar',
+							xAxisIndex: 1,
+							yAxisIndex: 1
+						},
+						{
+							type: 'bar',
+							xAxisIndex: 1,
+							yAxisIndex: 1
+						},
+						{
+							type: 'bar',
+							xAxisIndex: 1,
+							yAxisIndex: 1
+						},
+
+					]
+				};
+
+				option && myChart.setOption(option);
+			</script>
+		</table>
 	</body>
 </html>
